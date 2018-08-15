@@ -1,28 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { RouteComponentProps } from 'react-router-dom';
 import * as actions from './flow/actions';
-import { ImainPageStoreState } from './flow/mainPageReducers';
+import * as TYPES from './flow/types';
 import { IStoreState } from '../../store/configureStore';
 import './style.less';
 
-interface ImainPageActionsProps {
-  dataSync: () => void;
-  dataAsync: (parameter: string) => (dispatch: Dispatch) => void;
-}
-
-interface ImainPageState {
-  name: string;
-}
-
-interface ImainPageProps extends RouteComponentProps<any>, ImainPageActionsProps {
-  mainPage: ImainPageStoreState;
-}
-
-
-class MainComponent extends React.Component<ImainPageProps, ImainPageState> {
-  constructor(props: ImainPageProps){
+class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
+  constructor(props: TYPES.IHomePageProps){
     super(props);
     this.state = {
       name: ''
@@ -48,8 +32,8 @@ class MainComponent extends React.Component<ImainPageProps, ImainPageState> {
   }
 
   render() {
-    const { mainPage } = this.props;
-    const { syncId, asyncId } = mainPage;
+    const { homePage } = this.props;
+    const { syncId, asyncId } = homePage;
     const { name } = this.state;
     return (
       <div className="container">
@@ -80,10 +64,10 @@ class MainComponent extends React.Component<ImainPageProps, ImainPageState> {
 
 
 const mapStateToProps = (state: IStoreState ) => {
-  const mainPage: ImainPageStoreState = state.mainPage;
+  const homePage: TYPES.IHomePageStoreState = state.homePage;
   return {
-    mainPage,
+    homePage,
   }
 }
 
-export const MainPage = connect(mapStateToProps, actions)(MainComponent)
+export const HomePage = connect(mapStateToProps, actions)(HomeComponent)

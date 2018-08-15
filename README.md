@@ -56,36 +56,20 @@ React 系列：
 
 ## 使用
 
-在 `pages` 中创建一个目录，假设名为 `MainPage` （这是开发者可自己约定的命名），然后创建 `index.tsx`，`style.less`文件和 `flow` 目录（创建 `actions.ts`，`constants.ts`，`mainPageReducers.ts`），【如果你不使用redux，完全可以不创建 `flow` 目录】。
+在 `pages` 中创建一个目录，假设名为 `Home` （这是开发者可自己约定的命名），然后创建 `index.tsx`，`style.less`文件和 `flow` 目录（创建 `actions.ts`，`constants.ts`，`mainPageReducers.ts`），【如果你不使用redux，完全可以不创建 `flow` 目录】。
 
 编写入口 `index.tsx`：
 
 ```javascript
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { RouteComponentProps } from 'react-router-dom';
 import * as actions from './flow/actions';
-import { ImainPageStoreState } from './flow/mainPageReducers';
+import * as TYPES from './flow/types';
 import { IStoreState } from '../../store/configureStore';
 import './style.less';
 
-interface ImainPageActionsProps {
-  dataSync: () => void;
-  dataAsync: (parameter: string) => (dispatch: Dispatch) => void;
-}
-
-interface ImainPageState {
-  name: string;
-}
-
-interface ImainPageProps extends RouteComponentProps<any>, ImainPageActionsProps {
-  mainPage: ImainPageStoreState;
-}
-
-
-class MainComponent extends React.Component<ImainPageProps, ImainPageState> {
-  constructor(props: ImainPageProps){
+class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
+  constructor(props: TYPES.IHomePageProps){
     super(props);
     this.state = {
       name: ''
@@ -111,8 +95,8 @@ class MainComponent extends React.Component<ImainPageProps, ImainPageState> {
   }
 
   render() {
-    const { mainPage } = this.props;
-    const { syncId, asyncId } = mainPage;
+    const { homePage } = this.props;
+    const { syncId, asyncId } = homePage;
     const { name } = this.state;
     return (
       <div className="container">
@@ -143,36 +127,27 @@ class MainComponent extends React.Component<ImainPageProps, ImainPageState> {
 
 
 const mapStateToProps = (state: IStoreState ) => {
-  const mainPage: ImainPageStoreState = state.mainPage;
+  const homePage: TYPES.IHomePageStoreState = state.homePage;
   return {
-    mainPage,
+    homePage,
   }
 }
 
-export const MainPage = connect(mapStateToProps, actions)(MainComponent)
+export const HomePage = connect(mapStateToProps, actions)(HomeComponent)
 ```
 
 编写 `reducers`：
 
 ```javascript
 import * as CONST from './constants';
+import * as TYPES from './types';
 
-export interface ImainPageAction {
-  type: string;
-  payload: any;
-}
-
-export interface ImainPageStoreState {
-  syncId: string;
-  asyncId: string;
-}
-
-const initState: ImainPageStoreState = {
+const initState: TYPES.IHomePageStoreState = {
   syncId: '默认值',
   asyncId: '默认值'
 };
 
-export function mainPageReducers(state=initState, action: ImainPageAction): ImainPageStoreState{
+export function homeReducers(state=initState, action: TYPES.IHomePageAction): TYPES.IHomePageStoreState{
   const { type, payload } = action;
   switch(type) {
     case CONST.SYNC_DATA:
@@ -190,16 +165,17 @@ export function mainPageReducers(state=initState, action: ImainPageAction): Imai
 ```javascript
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { ImainPageStoreState, mainPageReducers } from '@/pages/MainPage/flow/mainPageReducers';
+import { homeReducers } from '@/pages/Home/flow/homeReducers';
+import { IHomePageStoreState } from '@/pages/Home/flow/types';
 
 /* eslint-disable no-underscore-dangle, no-undef */
 export interface IStoreState {
-  mainPage: ImainPageStoreState;
+  homePage: IHomePageStoreState;
 }
 
 const composeEnhancers = (<any> window) && (<any> window).REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 const reducer = combineReducers({
-  mainPage: mainPageReducers,
+  homePage: homeReducers,
 });
 
 export const configureStore = () => createStore(

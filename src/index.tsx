@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createHashHistory from 'history/createHashHistory';
 import { Router, Route } from 'react-router-dom';
-import { MainPage } from './pages/MainPage';
+import { HomePage } from './pages/Home';
 import { configureStore } from './store/configureStore';
 import './style.less';
 
@@ -16,7 +16,7 @@ class AppRouter extends React.Component {
       <div>
         <Provider store={ store }>
           <Router history={ history }>
-            <Route exact path="/" component={ MainPage }/>
+            <Route exact path="/" component={ HomePage }/>
           </Router>
         </Provider>  
       </div>
