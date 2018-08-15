@@ -1,2 +1,3 @@
-# WLM-React-TS-Template
-React + React-Router + Redux TypeScript 模板工程
+# WLM-TypeScript-React-Starter
+
+TypeScript [ React + React-Router + Redux ] Starter
