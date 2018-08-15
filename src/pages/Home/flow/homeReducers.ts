@@ -1,4 +1,4 @@
-import { IAction } from "@/store/types";
+import { IAction } from "@/global/types";
 import * as CONST from "./constants";
 import * as TYPES from "./types";
 
