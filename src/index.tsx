@@ -2,33 +2,20 @@ import { createHashHistory } from "history";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { Route, Router } from "react-router-dom";
-import { HomePage } from "./pages/Home";
-import * as globalActions from "./store/actions";
-import { configureStore } from "./store/configureStore";
-
+import { Router } from "react-router-dom";
+import * as globalActions from "./global/actions";
+import { configureStore } from "./global/configureStore";
+import { App } from "./app";
 import "./style.less";
 
 const history = createHashHistory();
 const store = configureStore();
 
-globalActions.setGlobalSyncId(store.dispatch);
-
-class AppRouter extends React.Component {
-  public render() {
-    return (
-      <div>
-        <Provider store={store}>
-          <Router history={history}>
-            <Route exact={true} path="/" component={HomePage}   />
-          </Router>
-        </Provider>
-      </div>
-    );
-  }
-}
-
 ReactDOM.render(
-  <AppRouter />,
+  <Provider store={store}>
+    <Router history={history}>
+      <App/>
+    </Router>
+  </Provider>,
   document.getElementById("app"),
 );

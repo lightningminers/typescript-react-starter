@@ -1,6 +1,6 @@
-import { Dispatch } from 'redux';
-import { RouteComponentProps } from 'react-router-dom';
-import { IGlobalStoreState } from '@/store/types';
+import { Dispatch } from "redux";
+import { RouteComponentProps } from "react-router-dom";
+import { IGlobalStoreState } from "@/global/types";
 
 export interface IHomePageStoreState {
   syncId: string;

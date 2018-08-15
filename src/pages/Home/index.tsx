@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import * as actions from "./flow/actions";
 import * as TYPES from "./flow/types";
-import { IStoreState } from "../../store/types";
+import { IStoreState } from "../../global/types";
 import { Header } from "./components/Header";
 import "./style.less";
 
