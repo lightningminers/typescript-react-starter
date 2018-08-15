@@ -19,7 +19,7 @@ class AppRouter extends React.Component {
       <div>
         <Provider store={ store }>
           <Router history={ history }>
-            <Route exact path='/' component={ HomePage }/>
+            <Route exact path="/" component={ HomePage }/>
           </Router>
         </Provider>
       </div>
