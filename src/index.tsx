@@ -14,20 +14,20 @@ const store = configureStore();
 globalActions.setGlobalSyncId(store.dispatch);
 
 class AppRouter extends React.Component {
-  render (){
+  render () {
     return (
       <div>
         <Provider store={ store }>
           <Router history={ history }>
-            <Route exact path="/" component={ HomePage }/>
+            <Route exact path='/' component={ HomePage }/>
           </Router>
-        </Provider>  
+        </Provider>
       </div>
-    )
+    );
   }
 }
 
 ReactDOM.render(
   <AppRouter />,
   document.getElementById('app'),
-)
+);

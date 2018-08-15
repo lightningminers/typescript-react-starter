@@ -8,7 +8,10 @@
     "build": "MODE=production webpack --mode=production",
     "start": "npm run dev",
     "serve": "python -m SimpleHTTPServer 8089",
-    "lint": "tslint --project tsconfig.json --type-check --force"
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/*/.{ts,tsx}": "tslint"
   },
   "keywords": [],
   "author": "icepy",
@@ -18,8 +21,11 @@
     "file-loader": "^1.1.11",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "lint-staged": "^7.2.2",
+    "pre-commit": "^1.2.2",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
+    "tslint": "^5.11.0",
     "typescript": "^3.0.1",
     "url-loader": "^1.1.0",
     "webpack": "^4.16.4",
@@ -37,7 +43,6 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "tslint": "^5.11.0"
+    "redux-thunk": "^2.3.0"
   }
 }

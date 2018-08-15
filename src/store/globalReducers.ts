@@ -1,10 +1,10 @@
 import * as CONST from './constants';
-import { IAction, IGlobalStoreState } from './types'
+import { IAction, IGlobalStoreState } from './types';
 
 const initState: IGlobalStoreState = {
   globalAsyncId: '',
   globalSyncId: ''
-}
+};
 
 export function globalReducers(state = initState, action: IAction): IGlobalStoreState {
   const { type, payload } = action;

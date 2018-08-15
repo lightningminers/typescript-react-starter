@@ -7,9 +7,9 @@ const initState: TYPES.IHomePageStoreState = {
   asyncId: '默认值'
 };
 
-export function homeReducers(state=initState, action: IAction): TYPES.IHomePageStoreState{
+export function homeReducers(state = initState, action: IAction): TYPES.IHomePageStoreState {
   const { type, payload } = action;
-  switch(type) {
+  switch (type) {
     case CONST.SYNC_DATA:
       return { ...state, syncId: payload.data };
     case CONST.ASYNC_DATA:

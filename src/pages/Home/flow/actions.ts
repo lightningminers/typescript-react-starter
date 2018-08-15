@@ -1,5 +1,5 @@
 import * as CONST from './constants';
-import { Dispatch } from "redux";
+import { Dispatch } from 'redux';
 
 export function dataSync() {
   const syncData  = {
@@ -12,7 +12,7 @@ export function dataSync() {
 }
 
 export function dataAsync(parameter: string): (dispatch: Dispatch) => void {
-  return function(dispatch: Dispatch){
+  return function(dispatch: Dispatch) {
     const asyncData = {
       type: CONST.ASYNC_DATA,
       payload: {
@@ -22,5 +22,5 @@ export function dataAsync(parameter: string): (dispatch: Dispatch) => void {
     setTimeout(() => {
       dispatch(asyncData);
     }, 2000);
-  }
+  };
 }

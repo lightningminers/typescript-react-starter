@@ -10,7 +10,7 @@ const localImage = require('@/assets/welearnmore.png');
 const onLineImage: string = 'http://images.w3crange.com/welearnmore.png';
 
 class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
-  constructor(props: TYPES.IHomePageProps){
+  constructor(props: TYPES.IHomePageProps) {
     super(props);
     this.state = {
       name: ''
@@ -41,15 +41,15 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
     const { globalSyncId } = global;
     const { name } = this.state;
     return (
-      <div className="container">
+      <div className='container'>
         <Header localImageSrc={ localImage } onLineImageSrc={ onLineImage } />
-        <div className="buttons">
+        <div className='buttons'>
           <button onClick={ this.actionDataSync }> dataSync action </button>
           <button onClick={ this.actionDataAsync }> dataAsync action </button>
           <button onClick={ this.setName }> setState name </button>
           <button onClick={ this.logReactRouterObj }> react-router object </button>
         </div>
-        <div className="contents">
+        <div className='contents'>
           <p>
             syncId: { syncId }
           </p>
@@ -76,7 +76,7 @@ const mapStateToProps = (state: IStoreState ) => {
   return {
     homePage,
     global
-  }
-}
+  };
+};
 
-export const HomePage = connect(mapStateToProps, actions)(HomeComponent)
+export const HomePage = connect(mapStateToProps, actions)(HomeComponent);
