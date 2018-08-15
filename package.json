@@ -8,8 +8,11 @@
     "build": "MODE=production webpack --mode=production",
     "start": "npm run dev",
     "serve": "python -m SimpleHTTPServer 8089",
-    "precommit": "lint-staged"
+    "lint": "tslint --project tsconfig.json --type-check --force"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "lint-staged": {
     "src/*/.{ts,tsx}": "tslint"
   },
