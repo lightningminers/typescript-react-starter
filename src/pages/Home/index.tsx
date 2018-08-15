@@ -40,6 +40,7 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
     const { syncId, asyncId } = homePage;
     const { globalSyncId } = global;
     const { name } = this.state;
+
     return (
       <div className="container">
         <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
