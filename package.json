@@ -37,7 +37,6 @@
     "@types/react-dom": "^16.0.7",
     "@types/react-redux": "^6.0.6",
     "@types/react-router-dom": "^4.3.0",
-    "history": "^4.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
