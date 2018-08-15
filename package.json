@@ -14,7 +14,7 @@
     "lint"
   ],
   "lint-staged": {
-    "src/*/.{ts,tsx}": "tslint"
+    "src/*/.{ts,tsx}": "lint"
   },
   "keywords": [],
   "author": "icepy",
