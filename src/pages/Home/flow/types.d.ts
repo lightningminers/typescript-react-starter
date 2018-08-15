@@ -1,10 +1,6 @@
 import { Dispatch } from 'redux';
-import { RouteComponentProps } from 'react-router-dom'
-
-export interface IHomePageAction {
-  type: string;
-  payload: any;
-}
+import { RouteComponentProps } from 'react-router-dom';
+import { IGlobalStoreState } from '@/store/types';
 
 export interface IHomePageStoreState {
   syncId: string;
@@ -22,4 +18,5 @@ export interface IHomePageState {
 
 export interface IHomePageProps extends RouteComponentProps<any>, IHomePageActionsProps {
   homePage: IHomePageStoreState;
+  global: IGlobalStoreState;
 }

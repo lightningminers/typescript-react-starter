@@ -30,11 +30,22 @@ module.exports = {
             loader: 'less-loader'
           }
         ]
+      },
+      {
+        test: /\.png/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024*20
+            }
+          }
+        ]
       }
     ]
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"],
+    extensions: [".ts", ".tsx", ".js", ".json", ".png"],
     alias: {
       '@': ROOT + '/src'
     }

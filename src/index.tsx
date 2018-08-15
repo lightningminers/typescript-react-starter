@@ -5,10 +5,13 @@ import createHashHistory from 'history/createHashHistory';
 import { Router, Route } from 'react-router-dom';
 import { HomePage } from './pages/Home';
 import { configureStore } from './store/configureStore';
+import * as globalActions from './store/actions';
 import './style.less';
 
 const history = createHashHistory();
 const store = configureStore();
+
+globalActions.setGlobalSyncId(store.dispatch);
 
 class AppRouter extends React.Component {
   render (){

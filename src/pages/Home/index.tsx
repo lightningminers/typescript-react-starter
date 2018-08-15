@@ -2,8 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as actions from './flow/actions';
 import * as TYPES from './flow/types';
-import { IStoreState } from '../../store/configureStore';
+import { IStoreState } from '../../store/types';
+import { Header } from './components/Header';
 import './style.less';
+
+const localImage = require('@/assets/welearnmore.png');
+const onLineImage: string = 'http://images.w3crange.com/welearnmore.png';
 
 class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
   constructor(props: TYPES.IHomePageProps){
@@ -32,11 +36,13 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
   }
 
   render() {
-    const { homePage } = this.props;
+    const { homePage, global } = this.props;
     const { syncId, asyncId } = homePage;
+    const { globalSyncId } = global;
     const { name } = this.state;
     return (
       <div className="container">
+        <Header localImageSrc={ localImage } onLineImageSrc={ onLineImage } />
         <div className="buttons">
           <button onClick={ this.actionDataSync }> dataSync action </button>
           <button onClick={ this.actionDataAsync }> dataAsync action </button>
@@ -56,17 +62,20 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
           <p>
             react-router object: open Chrome Dev Tool console.log;
           </p>
+          <p>
+            global Sync Id: { globalSyncId }
+          </p>
         </div>
       </div>
     );
   }
 }
 
-
 const mapStateToProps = (state: IStoreState ) => {
-  const homePage: TYPES.IHomePageStoreState = state.homePage;
+  const { homePage, global } = state;
   return {
     homePage,
+    global
   }
 }
 
