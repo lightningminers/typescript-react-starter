@@ -19,7 +19,7 @@ class AppComponent extends React.Component<IAppComponentProps> {
   public render() {
     return (
       <div>
-        <Route exact={true} path="/" component={HomePage}/>
+        <Route exact={true} path="/" component={HomePage} />
       </div>
     );
   }
