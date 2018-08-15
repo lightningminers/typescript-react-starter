@@ -1,69 +1,69 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import * as actions from './flow/actions';
-import * as TYPES from './flow/types';
-import { IStoreState } from '../../store/types';
-import { Header } from './components/Header';
-import './style.less';
+import * as React from "react";
+import { connect } from "react-redux";
+import * as actions from "./flow/actions";
+import * as TYPES from "./flow/types";
+import { IStoreState } from "../../store/types";
+import { Header } from "./components/Header";
+import "./style.less";
 
-const localImage = require('@/assets/welearnmore.png');
-const onLineImage: string = 'http://images.w3crange.com/welearnmore.png';
+const localImage = require("@/assets/welearnmore.png");
+const onLineImage: string = "http://images.w3crange.com/welearnmore.png";
 
 class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
   constructor(props: TYPES.IHomePageProps) {
     super(props);
     this.state = {
-      name: ''
+      name: "",
     };
   }
 
-  actionDataSync = () => {
+  public actionDataSync = () => {
     this.props.dataSync();
   }
 
-  actionDataAsync = () => {
-    this.props.dataAsync('icepy');
+  public actionDataAsync = () => {
+    this.props.dataAsync("icepy");
   }
 
-  setName = () => {
+  public setName = () => {
     this.setState({
-      name: 'icepy'
+      name: "icepy",
     });
   }
 
-  logReactRouterObj = () => {
-    console.log(this.props.history);
+  public logReactRouterObj = () => {
+    // console.log(this.props.history);
   }
 
-  render() {
+  public render() {
     const { homePage, global } = this.props;
     const { syncId, asyncId } = homePage;
     const { globalSyncId } = global;
     const { name } = this.state;
     return (
-      <div className='container'>
-        <Header localImageSrc={ localImage } onLineImageSrc={ onLineImage } />
-        <div className='buttons'>
-          <button onClick={ this.actionDataSync }> dataSync action </button>
-          <button onClick={ this.actionDataAsync }> dataAsync action </button>
-          <button onClick={ this.setName }> setState name </button>
-          <button onClick={ this.logReactRouterObj }> react-router object </button>
+      <div className="container">
+        <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
+        <div className="buttons">
+          <button onClick={this.actionDataSync}> dataSync action </button>
+          <button onClick={this.actionDataAsync}> dataAsync action </button>
+          <button onClick={this.setName}> setState name </button>
+          <button onClick={this.logReactRouterObj}> react-router object </button>
         </div>
-        <div className='contents'>
+        <div className="contents">
           <p>
-            syncId: { syncId }
+            syncId: {syncId}
           </p>
           <p>
-            asyncId: { asyncId }
+            asyncId: {asyncId}
           </p>
           <p>
-            setState name: { name }
+            setState name: {name}
           </p>
           <p>
             react-router object: open Chrome Dev Tool console.log;
           </p>
           <p>
-            global Sync Id: { globalSyncId }
+            global Sync Id: {globalSyncId}
           </p>
         </div>
       </div>
@@ -71,11 +71,11 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
   }
 }
 
-const mapStateToProps = (state: IStoreState ) => {
+const mapStateToProps = (state: IStoreState) => {
   const { homePage, global } = state;
   return {
     homePage,
-    global
+    global,
   };
 };
 

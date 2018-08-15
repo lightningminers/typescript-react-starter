@@ -3439,6 +3439,12 @@ tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
+tslint-react@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.npmjs.org/tslint-react/-/tslint-react-3.6.0.tgz#7f462c95c4a0afaae82507f06517ff02942196a1"
+  dependencies:
+    tsutils "^2.13.1"
+
 tslint@^5.11.0:
   version "5.11.0"
   resolved "https://registry.npmjs.org/tslint/-/tslint-5.11.0.tgz#98f30c02eae3cde7006201e4c33cb08b48581eed"
@@ -3456,7 +3462,7 @@ tslint@^5.11.0:
     tslib "^1.8.0"
     tsutils "^2.27.2"
 
-tsutils@^2.27.2:
+tsutils@^2.13.1, tsutils@^2.27.2:
   version "2.29.0"
   resolved "https://registry.npmjs.org/tsutils/-/tsutils-2.29.0.tgz#32b488501467acbedd4b85498673a0812aca0b99"
   dependencies:

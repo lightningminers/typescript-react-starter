@@ -1,10 +1,10 @@
-import * as CONST from './constants';
-import * as TYPES from './types';
-import { IAction } from '@/store/types';
+import { IAction } from "@/store/types";
+import * as CONST from "./constants";
+import * as TYPES from "./types";
 
 const initState: TYPES.IHomePageStoreState = {
-  syncId: '默认值',
-  asyncId: '默认值'
+  syncId: "默认值",
+  asyncId: "默认值",
 };
 
 export function homeReducers(state = initState, action: IAction): TYPES.IHomePageStoreState {

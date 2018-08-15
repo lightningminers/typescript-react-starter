@@ -1,9 +1,9 @@
-import * as CONST from './constants';
-import { IAction, IGlobalStoreState } from './types';
+import * as CONST from "./constants";
+import { IAction, IGlobalStoreState } from "./types";
 
 const initState: IGlobalStoreState = {
-  globalAsyncId: '',
-  globalSyncId: ''
+  globalAsyncId: "",
+  globalSyncId: "",
 };
 
 export function globalReducers(state = initState, action: IAction): IGlobalStoreState {

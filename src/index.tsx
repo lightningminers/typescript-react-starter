@@ -1,12 +1,13 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import createHashHistory from 'history/createHashHistory';
-import { Router, Route } from 'react-router-dom';
-import { HomePage } from './pages/Home';
-import { configureStore } from './store/configureStore';
-import * as globalActions from './store/actions';
-import './style.less';
+import { createHashHistory } from "history";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { Route, Router } from "react-router-dom";
+import { HomePage } from "./pages/Home";
+import * as globalActions from "./store/actions";
+import { configureStore } from "./store/configureStore";
+
+import "./style.less";
 
 const history = createHashHistory();
 const store = configureStore();
@@ -14,14 +15,14 @@ const store = configureStore();
 globalActions.setGlobalSyncId(store.dispatch);
 
 class AppRouter extends React.Component {
-  render () {
+  public render() {
     return (
       <div>
-        <Provider store={ store }>
-          <Router history={ history }>
-            <Route exact path="/" component={ HomePage }   />
+        <Provider store={store}>
+          <Router history={history}>
+            <Route exact={true} path="/" component={HomePage}   />
           </Router>
-        </Provider>   
+        </Provider>
       </div>
     );
   }
@@ -29,5 +30,5 @@ class AppRouter extends React.Component {
 
 ReactDOM.render(
   <AppRouter />,
-  document.getElementById('app'),
+  document.getElementById("app"),
 );

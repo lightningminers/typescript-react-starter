@@ -1,10 +1,10 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { globalReducers } from './globalReducers';
-import { homeReducers } from '@/pages/Home/flow/homeReducers';
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import thunk from "redux-thunk";
+import { homeReducers } from "@/pages/Home/flow/homeReducers";
+import { globalReducers } from "./globalReducers";
 
 /* eslint-disable no-underscore-dangle, no-undef */
-const composeEnhancers = (<any> window) && (<any> window).REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
+const composeEnhancers = (window as any) && (window as any).REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 const reducer = combineReducers({
   global: globalReducers,
   homePage: homeReducers,
