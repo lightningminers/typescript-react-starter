@@ -2,7 +2,6 @@
   "name": "WLM-TypeScript-React-Starter",
   "version": "1.0.0",
   "description": "TypeScript-React-Starter",
-  "main": "index.js",
   "scripts": {
     "dev": "MODE=development webpack -w --mode=development",
     "build": "MODE=production webpack --mode=production",

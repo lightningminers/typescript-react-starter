@@ -1,5 +1,7 @@
 ## WLM-TypeScript-React-Starter
 
+![](./src/assets/welearnmore.png)
+
 `WLM-TypeScript-React-Starter` 是一个 TypeScript Starter 项目，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为 Web 应用程序开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。 
 
 ## Install
@@ -21,6 +23,8 @@ $ npm start
 - typescript > 3
 - git
 - yarn
+- 支持 editorconfig
+- 支持 tslint
 
 React 系列：
 
@@ -46,12 +50,12 @@ React 系列：
 
 - components 不同页面之间复用的组件（自行创建）
 - pages 页面级别的组件
-  - [MainPage] 自定义的目录
+  - [Home] 自定义的目录
     - flow redux 相关
     - components 此页面可复用的组件（自行创建）
     - index.tsx 页面入口
     - style.less 样式入口
-- store redux store 配置
+- global redux store 配置 以及 global reducers
 - index.tsx 入口
 
 ## 使用
@@ -61,63 +65,72 @@ React 系列：
 编写入口 `index.tsx`：
 
 ```javascript
-import * as React from 'react';
-import { connect } from 'react-redux';
-import * as actions from './flow/actions';
-import * as TYPES from './flow/types';
-import { IStoreState } from '../../store/configureStore';
-import './style.less';
+import * as React from "react";
+import { connect } from "react-redux";
+import * as actions from "./flow/actions";
+import * as TYPES from "./flow/types";
+import { IStoreState } from "../../global/types";
+import { Header } from "./components/Header";
+import "./style.less";
+
+const localImage = require("@/assets/welearnmore.png");
+const onLineImage: string = "http://images.w3crange.com/welearnmore.png";
 
 class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
-  constructor(props: TYPES.IHomePageProps){
+  constructor(props: TYPES.IHomePageProps) {
     super(props);
     this.state = {
-      name: ''
+      name: "",
     };
   }
 
-  actionDataSync = () => {
+  public actionDataSync = () => {
     this.props.dataSync();
   }
 
-  actionDataAsync = () => {
-    this.props.dataAsync('icepy');
+  public actionDataAsync = () => {
+    this.props.dataAsync("icepy");
   }
 
-  setName = () => {
+  public setName = () => {
     this.setState({
-      name: 'icepy'
+      name: "icepy",
     });
   }
 
-  logReactRouterObj = () => {
-    console.log(this.props.history);
+  public logReactRouterObj = () => {
+    // console.log(this.props.history);
   }
 
-  render() {
-    const { homePage } = this.props;
+  public render() {
+    const { homePage, global } = this.props;
     const { syncId, asyncId } = homePage;
+    const { globalSyncId } = global;
     const { name } = this.state;
     return (
       <div className="container">
+        <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
         <div className="buttons">
-          <button onClick={ this.actionDataSync }> dataSync action </button>
-          <button onClick={ this.actionDataAsync }> dataAsync action </button>
-          <button onClick={ this.setName }> setState name </button>
-          <button onClick={ this.logReactRouterObj }> react-router object </button>
+          <button onClick={this.actionDataSync}> dataSync action </button>
+          <button onClick={this.actionDataAsync}> dataAsync action </button>
+          <button onClick={this.setName}> setState name </button>
+          <button onClick={this.logReactRouterObj}> react-router object </button>
         </div>
         <div className="contents">
           <p>
-            syncId: { syncId }
+            syncId: {syncId}
           </p>
           <p>
-            asyncId: { asyncId }
+            asyncId: {asyncId}
           </p>
           <p>
-            setState name: { name }
+            setState name: {name}
           </p>
           <p>
             react-router object: open Chrome Dev Tool console.log;
+          </p>
+          <p>
+            global Sync Id: {globalSyncId}
           </p>
         </div>
       </div>
@@ -125,31 +138,32 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
   }
 }
 
-
-const mapStateToProps = (state: IStoreState ) => {
-  const homePage: TYPES.IHomePageStoreState = state.homePage;
+const mapStateToProps = (state: IStoreState) => {
+  const { homePage, global } = state;
   return {
     homePage,
-  }
-}
+    global,
+  };
+};
 
-export const HomePage = connect(mapStateToProps, actions)(HomeComponent)
+export const HomePage = connect(mapStateToProps, actions)(HomeComponent);
 ```
 
 编写 `reducers`：
 
 ```javascript
-import * as CONST from './constants';
-import * as TYPES from './types';
+import { IAction } from "@/store/types";
+import * as CONST from "./constants";
+import * as TYPES from "./types";
 
 const initState: TYPES.IHomePageStoreState = {
-  syncId: '默认值',
-  asyncId: '默认值'
+  syncId: "默认值",
+  asyncId: "默认值",
 };
 
-export function homeReducers(state=initState, action: TYPES.IHomePageAction): TYPES.IHomePageStoreState{
+export function homeReducers(state = initState, action: IAction): TYPES.IHomePageStoreState {
   const { type, payload } = action;
-  switch(type) {
+  switch (type) {
     case CONST.SYNC_DATA:
       return { ...state, syncId: payload.data };
     case CONST.ASYNC_DATA:
@@ -163,13 +177,15 @@ export function homeReducers(state=initState, action: TYPES.IHomePageAction): TY
 在 `store` 中引入 reducers：
 
 ```javascript
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { homeReducers } from '@/pages/Home/flow/homeReducers';
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import thunk from "redux-thunk";
+import { homeReducers } from "@/pages/Home/flow/homeReducers";
+import { globalReducers } from "./globalReducers";
 
 /* eslint-disable no-underscore-dangle, no-undef */
-const composeEnhancers = (<any> window) && (<any> window).REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
+const composeEnhancers = (window as any) && (window as any).REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 const reducer = combineReducers({
+  global: globalReducers,
   homePage: homeReducers,
 });
 
