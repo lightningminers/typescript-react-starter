@@ -1,6 +1,6 @@
 import { IAction } from "@/global/types";
 import * as CONST from "./constants";
-import * as TYPES from "./types";
+import * as TYPES from "../types";
 
 const initState: TYPES.IHomePageStoreState = {
   syncId: "默认值",
