@@ -20,12 +20,14 @@ class AppComponent extends React.Component<IAppComponentProps> {
 
   public render() {
     return (
-      <Router >
+      <Router>
         <div>
           <div className="nav-container">
-            <NavLink to="/" >Home Page</NavLink>
+            <NavLink to="/">Home Page</NavLink>
             <NavLink to="/test">Test Page</NavLink>
           </div>
+
+          {/* register routes */}
           <Route exact={true} path="/" component={HomePage} />
           <Route path="/test" component={TestPage} />
         </div>
