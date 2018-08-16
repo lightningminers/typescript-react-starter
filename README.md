@@ -31,7 +31,6 @@ $ npm start
 React 系列：
 
 ```bash
-"prop-types": "^15.6.2",
 "react": "^16.4.2",
 "react-dom": "^16.4.2",
 "react-redux": "^5.0.7",
@@ -50,15 +49,20 @@ React 系列：
 
 `src` 目录结构如下：
 
-- components 不同页面之间复用的组件（自行创建）
-- pages 页面级别的组件
-  - [Home] 自定义的目录
-    - flow redux 相关
-    - components 此页面可复用的组件（自行创建）
-    - index.tsx 页面入口
-    - style.less 样式入口
-- global redux store 配置 以及 global reducers
-- index.tsx 入口
+- components # 通用组件
+- pages #页面
+  - Home # 自定义的目录
+    - flow # redux 相关
+      |- actions
+      |- reducers
+      |- constants
+    - components # 此页面组件
+    - index.tsx # 页面
+    - style.less # 样式
+    - types.d.ts # ts 声明
+- global # redux store 配置 以及 global reducers
+- index.tsx # 入口
+- app.tsx # layout & routes
 
 ## 使用
 
