@@ -28,7 +28,7 @@ class AppComponent extends React.Component<IAppComponentProps> {
           </div>
 
           {/* register routes */}
-          <Route exact={true} path="/" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/test" component={TestPage} />
         </div>
       </Router>
