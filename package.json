@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "TypeScript-React-Starter",
   "scripts": {
-    "dev": "webpack-dev-server --color --hot --open",
+    "dev": "MODE=development webpack-dev-server --color --hot --open --mode=development",
     "build": "MODE=production webpack --mode=production",
     "start": "npm run dev",
     "precommit": "lint-staged"
@@ -25,6 +25,7 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lint-staged": "^7.2.2",
+    "react-hot-loader": "^4.3.4",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
     "tslint": "^5.11.0",

@@ -2,8 +2,9 @@ import * as React from "react";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
+import { hot } from "react-hot-loader";
 import { IStoreState } from "./global/types";
-import * as globalActions from "./global/actions";
+import { setGlobalSyncId } from "./global/actions";
 import { HomePage } from "./pages/Home";
 import { TestPage } from "./pages/Test";
 import "./style.less";
@@ -12,10 +13,13 @@ interface IAppComponentProps {
   dispatch: Dispatch;
 }
 
-class AppComponent extends React.Component<IAppComponentProps> {
+class AppComponent extends React.Component<IAppComponentProps, {}> {
   constructor(props: IAppComponentProps) {
     super(props);
-    globalActions.setGlobalSyncId(this.props.dispatch);
+  }
+
+  public handleGlobal = () => {
+    this.props.dispatch(setGlobalSyncId());
   }
 
   public render() {
@@ -31,6 +35,11 @@ class AppComponent extends React.Component<IAppComponentProps> {
           {/* register routes */}
           <Route exact path="/" component={HomePage} />
           <Route path="/test" component={TestPage} />
+
+          <button onClick={this.handleGlobal}>
+            tirgger global action
+          </button>
+
         </div>
       </Router>
     );
@@ -44,4 +53,5 @@ const mapStateToProps = (state: IStoreState) => {
   };
 };
 
-export const App = connect(mapStateToProps)(AppComponent);
+const App = connect(mapStateToProps)(AppComponent);
+export default hot(module)(App);

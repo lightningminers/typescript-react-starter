@@ -10,7 +10,8 @@ module.exports = {
   output: {
     path: ROOT + '/dist',
     filename: '[name].bundle.js',
-    sourceMapFilename: '[name].bundle.map.js'
+    sourceMapFilename: '[name].bundle.map.js',
+    publicPath: '//localhost:8889/dist/',
   },
   devServer: {
     inline: true,
