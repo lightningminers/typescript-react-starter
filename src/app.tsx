@@ -5,8 +5,8 @@ import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import { hot } from "react-hot-loader";
 import { IStoreState } from "./global/types";
 import { setGlobalSyncId } from "./global/actions";
-import { HomePage } from "./pages/Home";
-import { TestPage } from "./pages/Test";
+import HomePage from "./pages/Home";
+import TestPage from "./pages/Test";
 import "./style.less";
 
 interface IAppComponentProps {

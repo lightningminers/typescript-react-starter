@@ -1,11 +1,11 @@
 import * as React from "react";
 
-export class TestPage extends React.Component {
-  public render() {
-    return(
-      <div>
-        This is test page.
-      </div>
-    );
-  }
-}
+const TestPage: React.SFC = () => {
+  return (
+    <div>
+      this is test page.
+    </div>
+  );
+};
+
+export default TestPage;

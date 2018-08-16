@@ -71,4 +71,5 @@ const mapStateToProps = (state: IStoreState) => {
   };
 };
 
-export const HomePage = connect(mapStateToProps, actions)(HomeComponent);
+const HomePage = connect(mapStateToProps, actions)(HomeComponent);
+export default HomePage;
