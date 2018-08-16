@@ -4,6 +4,8 @@
 
 `WLM-TypeScript-React-Starter` 是一个 TypeScript Starter 项目，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为 Web 应用程序开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。 
 
+[复杂 React 应用中的TypeScript 3.0实践](https://zhuanlan.zhihu.com/p/42141179)
+
 ## Install
 
 ```bash
