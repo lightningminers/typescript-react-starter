@@ -31,16 +31,11 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
     });
   }
 
-  public logReactRouterObj = () => {
-    // console.log(this.props.history);
-  }
-
   public render() {
     const { homePage, global } = this.props;
     const { syncId, asyncId } = homePage;
     const { globalSyncId } = global;
     const { name } = this.state;
-
     return (
       <div className="container">
         <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
@@ -48,7 +43,6 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
           <button onClick={this.actionDataSync}> dataSync action </button>
           <button onClick={this.actionDataAsync}> dataAsync action </button>
           <button onClick={this.setName}> setState name </button>
-          <button onClick={this.logReactRouterObj}> react-router object </button>
         </div>
         <div className="contents">
           <p>
@@ -59,9 +53,6 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
           </p>
           <p>
             setState name: {name}
-          </p>
-          <p>
-            react-router object: open Chrome Dev Tool console.log;
           </p>
           <p>
             global Sync Id: {globalSyncId}

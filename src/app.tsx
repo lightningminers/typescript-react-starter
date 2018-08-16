@@ -2,11 +2,11 @@ import * as React from "react";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
-import { createHashHistory } from "history";
 import { IStoreState } from "./global/types";
 import * as globalActions from "./global/actions";
 import { HomePage } from "./pages/Home";
-import TestPage from "./pages/Test";
+import { TestPage } from "./pages/TestPage";
+import "./style.less";
 
 interface IAppComponentProps {
   dispatch: Dispatch;
@@ -22,12 +22,10 @@ class AppComponent extends React.Component<IAppComponentProps> {
     return (
       <Router >
         <div>
-          <div>
-            <NavLink to="/" >Home</NavLink>
-            <br />
-            <NavLink to="/test">Test</NavLink>
+          <div className="nav-container">
+            <NavLink to="/" >Home Page</NavLink>
+            <NavLink to="/test">Test Page</NavLink>
           </div>
-
           <Route exact={true} path="/" component={HomePage} />
           <Route path="/test" component={TestPage} />
         </div>

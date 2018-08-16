@@ -1,7 +1,6 @@
 import * as React from "react";
 
-export default
-class TestPage extends React.Component {
+export class TestPage extends React.Component {
   public render() {
     return(
       <div>
