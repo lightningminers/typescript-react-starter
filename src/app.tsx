@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import { IStoreState } from "./global/types";
 import * as globalActions from "./global/actions";
 import { HomePage } from "./pages/Home";
-import { TestPage } from "./pages/TestPage";
+import { TestPage } from "./pages/Test";
 import "./style.less";
 
 interface IAppComponentProps {
