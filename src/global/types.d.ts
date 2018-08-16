@@ -1,4 +1,4 @@
-import { IHomePageStoreState } from '@/pages/Home/flow/types';
+import { IHomePageStoreState } from "../pages/Home/types";
 
 export interface IAction {
   type: string;

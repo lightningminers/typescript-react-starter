@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IHeaderProps } from "./flow/types";
+import { IHeaderProps } from "./types";
 import "./style.less";
 
 export const Header = (props: IHeaderProps): JSX.Element => {
