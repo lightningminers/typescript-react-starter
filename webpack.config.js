@@ -12,6 +12,12 @@ module.exports = {
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].bundle.map.js'
   },
+  devServer: {
+    inline: true,
+    quiet: true,
+    contentBase: "./",
+    port: 8889
+  },
   module: {
     rules: [
       { test: /\.ts[x]?$/, loader: "awesome-typescript-loader" },

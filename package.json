@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "TypeScript-React-Starter",
   "scripts": {
-    "dev": "MODE=development webpack -w --mode=development",
+    "dev": "webpack-dev-server --color --hot --open",
     "build": "MODE=production webpack --mode=production",
     "start": "npm run dev",
-    "serve": "python -m SimpleHTTPServer 8089",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -15,6 +14,10 @@
   "keywords": [],
   "author": "icepy",
   "devDependencies": {
+    "@types/react": "^16.4.10",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-redux": "^6.0.6",
+    "@types/react-router-dom": "^4.3.0",
     "awesome-typescript-loader": "^5.2.0",
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
@@ -29,15 +32,10 @@
     "typescript": "^3.0.1",
     "url-loader": "^1.1.0",
     "webpack": "^4.16.4",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
-    "@types/history": "^4.7.0",
-    "@types/react": "^16.4.10",
-    "@types/react-dom": "^16.0.7",
-    "@types/react-redux": "^6.0.6",
-    "@types/react-router-dom": "^4.3.0",
-    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
