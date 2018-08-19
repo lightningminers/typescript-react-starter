@@ -28,7 +28,7 @@ class AppComponent extends React.Component<IAppComponentProps, {}> {
         <div>
           {/* layout struct(like nav, sidebar...) */}
           <div className="nav-container">
-            <NavLink to="/">Home Page</NavLink>
+            <NavLink exact to="/">Home Page</NavLink>
             <NavLink to="/test">Test Page</NavLink>
           </div>
 
