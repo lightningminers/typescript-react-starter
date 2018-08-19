@@ -39,6 +39,20 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        include: ROOT + '/src',
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]___[hash:base64:5]'
+            }
+          }
+        ]
+      },
+      {
         test: /\.png/,
         use: [
           {
