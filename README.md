@@ -27,6 +27,7 @@ $ npm start
 - yarn
 - 支持 editorconfig
 - 支持 tslint
+- 支持 css module
 
 React 系列：
 
@@ -58,7 +59,7 @@ React 系列：
       |- constants
     - components # 此页面组件
     - index.tsx # 页面
-    - style.less # 样式
+    - style.css # 样式
     - types.d.ts # ts 声明
 - global # redux store 配置 以及 global reducers
 - index.tsx # 入口
