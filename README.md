@@ -27,7 +27,7 @@ $ npm start
 - yarn
 - 支持 editorconfig
 - 支持 tslint
-- 支持 css module
+- 支持 css modules
 
 React 系列：
 
