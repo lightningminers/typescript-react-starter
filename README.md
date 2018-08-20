@@ -75,10 +75,10 @@ React 系列：
 import * as React from "react";
 import { connect } from "react-redux";
 import * as actions from "./flow/actions";
-import * as TYPES from "./flow/types";
+import * as TYPES from "./types";
 import { IStoreState } from "../../global/types";
 import { Header } from "./components/Header";
-import "./style.less";
+import styles from "./style.css";
 
 const localImage = require("@/assets/welearnmore.png");
 const onLineImage: string = "http://images.w3crange.com/welearnmore.png";
@@ -105,25 +105,20 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
     });
   }
 
-  public logReactRouterObj = () => {
-    // console.log(this.props.history);
-  }
-
   public render() {
     const { homePage, global } = this.props;
     const { syncId, asyncId } = homePage;
     const { globalSyncId } = global;
     const { name } = this.state;
     return (
-      <div className="container">
+      <div className={styles["container"]}>
         <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
-        <div className="buttons">
+        <div>
           <button onClick={this.actionDataSync}> dataSync action </button>
           <button onClick={this.actionDataAsync}> dataAsync action </button>
           <button onClick={this.setName}> setState name </button>
-          <button onClick={this.logReactRouterObj}> react-router object </button>
         </div>
-        <div className="contents">
+        <div className={styles["contents"]}>
           <p>
             syncId: {syncId}
           </p>
@@ -132,9 +127,6 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
           </p>
           <p>
             setState name: {name}
-          </p>
-          <p>
-            react-router object: open Chrome Dev Tool console.log;
           </p>
           <p>
             global Sync Id: {globalSyncId}
@@ -153,15 +145,17 @@ const mapStateToProps = (state: IStoreState) => {
   };
 };
 
-export const HomePage = connect(mapStateToProps, actions)(HomeComponent);
+const HomePage = connect(mapStateToProps, actions)(HomeComponent);
+export default HomePage;
+
 ```
 
 编写 `reducers`：
 
 ```javascript
-import { IAction } from "@/store/types";
+import { IAction } from "@/global/types";
 import * as CONST from "./constants";
-import * as TYPES from "./types";
+import * as TYPES from "../types";
 
 const initState: TYPES.IHomePageStoreState = {
   syncId: "默认值",
@@ -179,6 +173,7 @@ export function homeReducers(state = initState, action: IAction): TYPES.IHomePag
       return { ...state };
   }
 }
+
 ```
 
 在 `store` 中引入 reducers：
@@ -187,9 +182,8 @@ export function homeReducers(state = initState, action: IAction): TYPES.IHomePag
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import { homeReducers } from "@/pages/Home/flow/homeReducers";
-import { globalReducers } from "./globalReducers";
+import { globalReducers } from "./reducers";
 
-/* eslint-disable no-underscore-dangle, no-undef */
 const composeEnhancers = (window as any) && (window as any).REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 const reducer = combineReducers({
   global: globalReducers,
@@ -200,6 +194,7 @@ export const configureStore = () => createStore(
   reducer,
   composeEnhancers(applyMiddleware(thunk)),
 );
+
 ```
 
 ## LICENSE
