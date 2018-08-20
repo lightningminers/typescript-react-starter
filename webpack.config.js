@@ -53,7 +53,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json", ".png"],
     alias: {
-      '@': path.resolve(ROOT,'/src')
+      '@': path.resolve(ROOT,'src')
     }
   },
   plugins: [
