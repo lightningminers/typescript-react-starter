@@ -1,11 +1,11 @@
 import * as React from "react";
 import { IHeaderProps } from "./types";
-import "./style.less";
+import styles from "./style.css";
 
-export const Header = (props: IHeaderProps): JSX.Element => {
+export const Header: React.SFC<IHeaderProps> = (props: IHeaderProps) => {
   const { localImageSrc, onLineImageSrc } = props;
   return (
-    <div className="header-container">
+    <div className={styles["header-container"]}>
       <img src={localImageSrc} />
       <img src={onLineImageSrc} />
     </div>

@@ -12,6 +12,7 @@
       "ordered-imports": false,
       "no-implicit-dependencies": false,
       "no-submodule-imports": false,
-      "no-var-requires": false
+      "no-var-requires": false,
+      "no-string-literal": false
   }
 }

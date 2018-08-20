@@ -4,7 +4,7 @@ import * as actions from "./flow/actions";
 import * as TYPES from "./types";
 import { IStoreState } from "../../global/types";
 import { Header } from "./components/Header";
-import "./style.less";
+import styles from "./style.css";
 
 const localImage = require("@/assets/welearnmore.png");
 const onLineImage: string = "http://images.w3crange.com/welearnmore.png";
@@ -37,14 +37,14 @@ class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePag
     const { globalSyncId } = global;
     const { name } = this.state;
     return (
-      <div className="container">
+      <div className={styles["container"]}>
         <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
-        <div className="buttons">
+        <div>
           <button onClick={this.actionDataSync}> dataSync action </button>
           <button onClick={this.actionDataAsync}> dataAsync action </button>
           <button onClick={this.setName}> setState name </button>
         </div>
-        <div className="contents">
+        <div className={styles["contents"]}>
           <p>
             syncId: {syncId}
           </p>

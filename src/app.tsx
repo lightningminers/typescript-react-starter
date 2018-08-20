@@ -7,7 +7,7 @@ import { IStoreState } from "./global/types";
 import { setGlobalSyncId } from "./global/actions";
 import HomePage from "./pages/Home";
 import TestPage from "./pages/Test";
-import "./style.less";
+import styles from "./style.css";
 
 interface IAppComponentProps {
   dispatch: Dispatch;
@@ -27,7 +27,7 @@ class AppComponent extends React.Component<IAppComponentProps, {}> {
       <Router>
         <div>
           {/* layout struct(like nav, sidebar...) */}
-          <div className="nav-container">
+          <div className={styles["nav-container"]}>
             <NavLink exact to="/">Home Page</NavLink>
             <NavLink to="/test">Test Page</NavLink>
           </div>

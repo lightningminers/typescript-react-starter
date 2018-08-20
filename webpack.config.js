@@ -24,21 +24,6 @@ module.exports = {
       { test: /\.ts[x]?$/, loader: "awesome-typescript-loader" },
       { enforce: "pre", test: /\.ts[x]$/, loader: "source-map-loader" },
       {
-        test: /\.less$/,
-        include: ROOT + '/src',
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'less-loader'
-          }
-        ]
-      },
-      {
         test: /\.css$/,
         include: ROOT + '/src',
         use: [
