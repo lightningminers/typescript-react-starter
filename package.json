@@ -13,6 +13,7 @@
   },
   "keywords": [],
   "author": "icepy",
+  "license": "LGPL-3.0",
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.0",
     "css-loader": "^1.0.0",
