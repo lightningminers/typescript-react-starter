@@ -1,21 +1,25 @@
-## WLM-TypeScript-React-Starter
+## typescript-react-starter
 
-![](./src/assets/welearnmore.png)
+<div align=center>
+  <img src="./src/assets/welearnmore.png" width="120"/>
+</div>
 
-`WLM-TypeScript-React-Starter` 是一个 TypeScript Starter 项目，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为 Web 应用程序开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。 
+![https://img.shields.io/github/license/welearnmore/typescript-react-starter.svg](https://img.shields.io/github/license/welearnmore/typescript-react-starter.svg)
+![https://img.shields.io/github/issues/welearnmore/typescript-react-starter.svg](https://img.shields.io/github/issues/welearnmore/typescript-react-starter.svg)
+![https://img.shields.io/github/languages/code-size/welearnmore/typescript-react-starter.svg](https://img.shields.io/github/languages/code-size/welearnmore/typescript-react-starter.svg)
 
-[复杂 React 应用中的TypeScript 3.0实践](https://zhuanlan.zhihu.com/p/42141179)
+`typescript-react-starter` 是一个 TypeScript Starter 工程，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为 Web 应用程序开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。 
 
 ## Install
 
 ```bash
-$ git clone https://github.com/welearnmore/WLM-TypeScript-React-Starter.git
-$ cd WLM-TypeScript-React-Starter
+$ git clone git@github.com:welearnmore/typescript-react-starter.git
+$ cd typescript-react-starter
 $ yarn
 $ npm start
 ```
 
-直接使用浏览器访问本地文件 `index.html`，即可。（更多命令可查看 package.json 的 scripts 字段）
+使用浏览器访问 `http://localhost:8889/#/`。（更多命令可查看 package.json 的 scripts 字段）
 
 ## Version
 
