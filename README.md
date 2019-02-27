@@ -1,12 +1,12 @@
-## typescript-react-starter
+# typescript-react-starter
 
 <div align=center>
-  <img src="./src/assets/welearnmore.png" width="120"/>
+  <img src="./src/assets/welearnmore.png" width="200"/>
 </div>
 
-![https://img.shields.io/github/license/welearnmore/typescript-react-starter.svg](https://img.shields.io/github/license/welearnmore/typescript-react-starter.svg)
-![https://img.shields.io/github/issues/welearnmore/typescript-react-starter.svg](https://img.shields.io/github/issues/welearnmore/typescript-react-starter.svg)
-![https://img.shields.io/github/languages/code-size/welearnmore/typescript-react-starter.svg](https://img.shields.io/github/languages/code-size/welearnmore/typescript-react-starter.svg)
+![license](https://img.shields.io/github/license/lightningminers/typescript-react-starter.svg)
+![issues](https://img.shields.io/github/issues/lightningminers/typescript-react-starter.svg)
+![languages](https://img.shields.io/github/languages/code-size/lightningminers/typescript-react-starter.svg)
 
 `typescript-react-starter` 是一个 TypeScript Starter 工程，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为 Web 应用程序开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。 
 
