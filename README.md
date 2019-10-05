@@ -1,205 +1,79 @@
 # typescript-react-starter
 
-<div align=center>
-  <img src="./src/assets/welearnmore.png" width="200"/>
-</div>
+![license](https://img.shields.io/github/license/icepy/typescript-react-starter)
+![forks](https://img.shields.io/github/forks/icepy/typescript-react-starter)
+![stars](https://img.shields.io/github/stars/icepy/typescript-react-starter)
+![issues](https://img.shields.io/github/issues/icepy/typescript-react-starter)
 
-![license](https://img.shields.io/github/license/lightningminers/typescript-react-starter.svg)
-![issues](https://img.shields.io/github/issues/lightningminers/typescript-react-starter.svg)
-![languages](https://img.shields.io/github/languages/code-size/lightningminers/typescript-react-starter.svg)
-
-`typescript-react-starter` 是一个 TypeScript Starter 工程，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为 Web 应用程序开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。 
+`typescript-react-starter` 是一个使用CRA编写的 TypeScript Starter 工程，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为移动 Web 应用开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。
 
 ## Install
 
 ```bash
-$ git clone git@github.com:welearnmore/typescript-react-starter.git
+$ git clone git@github.com:icepy/typescript-react-starter.git
 $ cd typescript-react-starter
 $ yarn
 $ npm start
 ```
 
-使用浏览器访问 `http://localhost:8889/#/`。（更多命令可查看 package.json 的 scripts 字段）
+使用浏览器访问 `http://localhost:3000/`。（更多命令可查看 package.json 的 scripts 字段）
 
-## Version
+## 工程结构
 
-编译环境：
+- assets 放置图片等文件资源
+- components 放置被共享的组件
+- pages 放置页面级别的组件
+- services 放置本工程依赖的所有请求服务
+- store 放置本工程被管理的数据流
+- themes 放置本工程主题文件
+- third_party 放置依赖的第三方
+- typings 放置类型增强
+- utils 工具函数集合
+- App.tsx 应用的容器文件
+- index.tsx 入口文件
 
-- node.js > 8.0
-- typescript > 3
-- git
-- yarn
-- 支持 editorconfig
-- 支持 tslint
-- 支持 css modules
+## 函数式编程
 
-React 系列：
+函数式的好处，非常多，举例不拘。不管是样式还是组件逻辑，我们只有一个原则：组合，我们需要从这样的角度来考虑任何问题。
 
-```bash
-"react": "^16.4.2",
-"react-dom": "^16.4.2",
-"react-redux": "^5.0.7",
-"react-router-dom": "^4.3.1",
-"redux": "^4.0.0",
-"redux-thunk": "^2.3.0"
-```
+## 适配方案
 
-## 目录结构
+基于iPhone 6来完成设计稿，即 1334 * 750，在编写的时候直接使用 `px` 单位即可。
 
-顶级目录结构如下：
+## 必要的注释
 
-- src 项目源文件
-- typings 自定义声明
-- dist 编译后的目录
+![img](./tools/action.png)
+![img](./tools/doc.png)
 
-`src` 目录结构如下：
+## 时间旅行&操作日志
 
-- components # 通用组件
-- pages #页面
-  - Home # 自定义的目录
-    - flow # redux 相关
-      |- actions
-      |- reducers
-      |- constants
-    - components # 此页面组件
-    - index.tsx # 页面
-    - style.css # 样式
-    - types.d.ts # ts 声明
-- global # redux store 配置 以及 global reducers
-- index.tsx # 入口
-- app.tsx # layout & routes
+操作的回溯让我们对某一个业务的变化了如指掌
 
-## 使用
+![img](./tools/redux_timer.gif)
 
-在 `pages` 中创建一个目录，假设名为 `Home` （这是开发者可自己约定的命名），然后创建 `index.tsx`，`style.less`文件和 `flow` 目录（创建 `actions.ts`，`constants.ts`，`mainPageReducers.ts`），【如果你不使用redux，完全可以不创建 `flow` 目录】。
+## Component
 
-编写入口 `index.tsx`：
+节点可以打上 tag 或 name，方便于任何一个人来理解业务
 
-```javascript
-import * as React from "react";
-import { connect } from "react-redux";
-import * as actions from "./flow/actions";
-import * as TYPES from "./types";
-import { IStoreState } from "../../global/types";
-import { Header } from "./components/Header";
-import styles from "./style.css";
+![img](./tools/components.gif)
 
-const localImage = require("@/assets/welearnmore.png");
-const onLineImage: string = "http://images.w3crange.com/welearnmore.png";
+## Profiler
 
-class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
-  constructor(props: TYPES.IHomePageProps) {
-    super(props);
-    this.state = {
-      name: "",
-    };
-  }
+> 优化是另一个问题，我们会基于此来展开优化，包括网络，资源文件，store 的大小，react 组合，分割等等方面。
 
-  public actionDataSync = () => {
-    this.props.dataSync();
-  }
+![img](./tools/profiler.gif)
 
-  public actionDataAsync = () => {
-    this.props.dataAsync("icepy");
-  }
+![img](./tools/performance.png)
 
-  public setName = () => {
-    this.setState({
-      name: "icepy",
-    });
-  }
+## 远程回溯
 
-  public render() {
-    const { homePage, global } = this.props;
-    const { syncId, asyncId } = homePage;
-    const { globalSyncId } = global;
-    const { name } = this.state;
-    return (
-      <div className={styles["container"]}>
-        <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
-        <div>
-          <button onClick={this.actionDataSync}> dataSync action </button>
-          <button onClick={this.actionDataAsync}> dataAsync action </button>
-          <button onClick={this.setName}> setState name </button>
-        </div>
-        <div className={styles["contents"]}>
-          <p>
-            syncId: {syncId}
-          </p>
-          <p>
-            asyncId: {asyncId}
-          </p>
-          <p>
-            setState name: {name}
-          </p>
-          <p>
-            global Sync Id: {globalSyncId}
-          </p>
-        </div>
-      </div>
-    );
-  }
-}
+> 这个事情就能做一个大系统
 
-const mapStateToProps = (state: IStoreState) => {
-  const { homePage, global } = state;
-  return {
-    homePage,
-    global,
-  };
-};
+当用户端发生一个错误时，我们可以将当前节点的数据快照传输到服务端，然后进行错误分析。
 
-const HomePage = connect(mapStateToProps, actions)(HomeComponent);
-export default HomePage;
+## CI/CD
 
-```
-
-编写 `reducers`：
-
-```javascript
-import { IAction } from "@/global/types";
-import * as CONST from "./constants";
-import * as TYPES from "../types";
-
-const initState: TYPES.IHomePageStoreState = {
-  syncId: "默认值",
-  asyncId: "默认值",
-};
-
-export function homeReducers(state = initState, action: IAction): TYPES.IHomePageStoreState {
-  const { type, payload } = action;
-  switch (type) {
-    case CONST.SYNC_DATA:
-      return { ...state, syncId: payload.data };
-    case CONST.ASYNC_DATA:
-      return { ...state, asyncId: payload.data };
-    default:
-      return { ...state };
-  }
-}
-
-```
-
-在 `store` 中引入 reducers：
-
-```javascript
-import { createStore, applyMiddleware, combineReducers, compose } from "redux";
-import thunk from "redux-thunk";
-import { homeReducers } from "@/pages/Home/flow/homeReducers";
-import { globalReducers } from "./reducers";
-
-const composeEnhancers = (window as any) && (window as any).REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
-const reducer = combineReducers({
-  global: globalReducers,
-  homePage: homeReducers,
-});
-
-export const configureStore = () => createStore(
-  reducer,
-  composeEnhancers(applyMiddleware(thunk)),
-);
-
-```
+> 我之前一直使用的是gitlab，所以CI/CD是基于 runner 做的。
 
 ## LICENSE
 

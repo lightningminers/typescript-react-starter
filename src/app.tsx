@@ -1,57 +1,13 @@
-import * as React from "react";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
-import { HashRouter as Router, Route, NavLink } from "react-router-dom";
-import { hot } from "react-hot-loader";
-import { IStoreState } from "./global/types";
-import { setGlobalSyncId } from "./global/actions";
-import HomePage from "./pages/Home";
-import TestPage from "./pages/Test";
-import styles from "./style.css";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./pages/home";
 
-interface IAppComponentProps {
-  dispatch: Dispatch;
+const App = () => {
+  return (
+    <Router>
+      <Route exact path="/" component={Home}></Route>
+    </Router>
+  )
 }
 
-class AppComponent extends React.Component<IAppComponentProps, {}> {
-  constructor(props: IAppComponentProps) {
-    super(props);
-  }
-
-  public handleGlobal = () => {
-    this.props.dispatch(setGlobalSyncId());
-  }
-
-  public render() {
-    return (
-      <Router>
-        <div>
-          {/* layout struct(like nav, sidebar...) */}
-          <div className={styles["nav-container"]}>
-            <NavLink exact to="/">Home Page</NavLink>
-            <NavLink to="/test">Test Page</NavLink>
-          </div>
-
-          {/* register routes */}
-          <Route exact path="/" component={HomePage} />
-          <Route path="/test" component={TestPage} />
-
-          <button onClick={this.handleGlobal}>
-            tirgger global action
-          </button>
-
-        </div>
-      </Router>
-    );
-  }
-}
-
-const mapStateToProps = (state: IStoreState) => {
-  const { global } = state;
-  return {
-    global,
-  };
-};
-
-const App = connect(mapStateToProps)(AppComponent);
-export default hot(module)(App);
+export default App;

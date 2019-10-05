@@ -1,75 +1,54 @@
-import * as React from "react";
+import React from "react";
 import { connect } from "react-redux";
-import * as actions from "./flow/actions";
-import * as TYPES from "./types";
-import { IStoreState } from "../../global/types";
-import { Header } from "./components/Header";
-import styles from "./style.css";
+import { Dispatch } from "redux";
+import { IPageRoute } from "../shared";
+import { IGlobal } from "../../store/global";
+import { IStoreState } from "../../store/shared";
+import * as actions from "./flow";
+import Logo from "../../assets/logo.svg";
 
-const localImage = require("@/assets/welearnmore.png");
-const onLineImage: string = "http://images.w3crange.com/welearnmore.png";
+interface IProps extends IPageRoute<any>, actions.IActions, actions.IHome {
+  global: IGlobal;
+}
 
-class HomeComponent extends React.Component<TYPES.IHomePageProps, TYPES.IHomePageState> {
-  constructor(props: TYPES.IHomePageProps) {
-    super(props);
-    this.state = {
-      name: "",
-    };
+class Home extends React.Component<IProps>{
+  onClick = () => {
+    this.props.updateCount(this.props.count)
   }
 
-  public actionDataSync = () => {
-    this.props.dataSync();
+  onClickAsync = () => {
+    this.props.asyncUpdateCount(this.props.count);
   }
 
-  public actionDataAsync = () => {
-    this.props.dataAsync("icepy");
-  }
-
-  public setName = () => {
-    this.setState({
-      name: "icepy",
-    });
-  }
-
-  public render() {
-    const { homePage, global } = this.props;
-    const { syncId, asyncId } = homePage;
-    const { globalSyncId } = global;
-    const { name } = this.state;
-    return (
-      <div className={styles["container"]}>
-        <Header localImageSrc={localImage} onLineImageSrc={onLineImage} />
-        <div>
-          <button onClick={this.actionDataSync}> dataSync action </button>
-          <button onClick={this.actionDataAsync}> dataAsync action </button>
-          <button onClick={this.setName}> setState name </button>
-        </div>
-        <div className={styles["contents"]}>
-          <p>
-            syncId: {syncId}
-          </p>
-          <p>
-            asyncId: {asyncId}
-          </p>
-          <p>
-            setState name: {name}
-          </p>
-          <p>
-            global Sync Id: {globalSyncId}
-          </p>
-        </div>
-      </div>
+  render(){
+    return(
+      <>
+        <button onClick={this.onClick}>同步更新Count</button>
+        <button onClick={this.onClickAsync}>异步更新Count</button>
+        <div style={{ paddingLeft: "10px"}}>{this.props.count}</div>
+        <img src={Logo} alt="" />
+      </>
     );
   }
 }
 
 const mapStateToProps = (state: IStoreState) => {
-  const { homePage, global } = state;
+  const { global, home } = state;
   return {
-    homePage,
     global,
-  };
-};
+    ...home,
+  }
+}
 
-const HomePage = connect(mapStateToProps, actions)(HomeComponent);
-export default HomePage;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    updateCount: (count: number) => {
+      dispatch(actions.updateCount(count));
+    },
+    asyncUpdateCount: (count: number) => {
+      actions.asyncUpdateCount(count, dispatch);
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
