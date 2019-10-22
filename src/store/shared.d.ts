@@ -1,13 +1,13 @@
 import { IGlobal } from "./global";
-import { IHome } from "../pages/home/flow";
+import { IHomePage } from "../pages/home/flow";
 
 
 export interface IStoreState {
   global: IGlobal,
-  home: IHome,
+  homePage: IHomePage,
 }
 
-export interface IAction {
+export interface IAction<T=any> {
   type: string;
-  playload: any;
+  playload: T;
 }

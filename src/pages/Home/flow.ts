@@ -1,12 +1,10 @@
 import { Dispatch } from "redux";
 import { IAction } from "../../store/shared";
 
-export interface IActions {
-  updateCount: (count: number) => void;
-  asyncUpdateCount: (count: number) => void;
-}
+export type UpdateCount = (count: number) => void;
+export type AsyncUpdateCount = (count: number) => void;
 
-export interface IHome {
+export interface IHomePage {
   count: number;
 }
 
@@ -30,7 +28,7 @@ export const updateCount = (count: number) => {
  * @param count number
  * @param dispatch Dispatch<IAction>
  */
-export const asyncUpdateCount = (count: number, dispatch: Dispatch<IAction>) => {
+export const asyncUpdateCount = (count: number) => (dispatch: Dispatch<IAction>) => {
   setTimeout(() => {
     const newCount = count + 1;
     dispatch({
@@ -40,7 +38,7 @@ export const asyncUpdateCount = (count: number, dispatch: Dispatch<IAction>) => 
   }, 1000);
 }
 
-const initialState: IHome = {
+const initialState: IHomePage = {
   count: 0,
 }
 

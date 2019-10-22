@@ -8,10 +8,10 @@ import createMyStore from "./store";
 
 const store = createMyStore();
 
-window.DUEDEX_STORE = store;
+window.TRS_STORE = store;
 
 ReactDOM.render(
-  <Provider store={store  }>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')

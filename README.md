@@ -5,7 +5,7 @@
 ![stars](https://img.shields.io/github/stars/icepy/typescript-react-starter)
 ![issues](https://img.shields.io/github/issues/icepy/typescript-react-starter)
 
-`typescript-react-starter` 是一个使用CRA编写的 TypeScript Starter 工程，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为移动 Web 应用开发者提供 “开箱即用” 的 TypeScript 工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。
+`typescript-react-starter` 是一个使用CRA编写的 TypeScript Starter 工程，集成了 [ React + React-Router + Redux + Redux-Thunk ]，旨在为移动 Web 应用开发者提供 “开箱即用” 的 TypeScript 样板工程，开发者只需下载此项目，根据范例即可编写复杂大型的 React 应用。
 
 ## Install
 
@@ -28,7 +28,7 @@ $ npm start
 - themes 放置本工程主题文件
 - third_party 放置依赖的第三方
 - typings 放置类型增强
-- utils 工具函数集合
+- shared 共享的集合
 - App.tsx 应用的容器文件
 - index.tsx 入口文件
 

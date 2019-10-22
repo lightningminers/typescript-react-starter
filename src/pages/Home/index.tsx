@@ -1,14 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
 import { IPageRoute } from "../shared";
 import { IGlobal } from "../../store/global";
 import { IStoreState } from "../../store/shared";
-import * as actions from "./flow";
-import Logo from "../../assets/logo.svg";
+import {
+  IHomePage,
+  UpdateCount,
+  AsyncUpdateCount,
+  updateCount,
+  asyncUpdateCount
+} from "./flow";
+import logoSvg from "../../assets/logo.svg";
 
-interface IProps extends IPageRoute<any>, actions.IActions, actions.IHome {
+interface IProps extends IPageRoute<any>, IHomePage {
   global: IGlobal;
+  updateCount: UpdateCount;
+  asyncUpdateCount: AsyncUpdateCount;
 }
 
 class Home extends React.Component<IProps>{
@@ -19,36 +26,26 @@ class Home extends React.Component<IProps>{
   onClickAsync = () => {
     this.props.asyncUpdateCount(this.props.count);
   }
-
   render(){
     return(
-      <>
+      <div>
         <button onClick={this.onClick}>同步更新Count</button>
         <button onClick={this.onClickAsync}>异步更新Count</button>
         <div style={{ paddingLeft: "10px"}}>{this.props.count}</div>
-        <img src={Logo} alt="" />
-      </>
+        <img src={logoSvg} alt="" width="100vw"/>
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state: IStoreState) => {
-  const { global, home } = state;
-  return {
-    global,
-    ...home,
-  }
-}
+const mapStateToProps = (state: IStoreState) => ({
+  global: state.global,
+  ...state.homePage
+});
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return {
-    updateCount: (count: number) => {
-      dispatch(actions.updateCount(count));
-    },
-    asyncUpdateCount: (count: number) => {
-      actions.asyncUpdateCount(count, dispatch);
-    }
-  };
+const mapDispatchToProps = {
+  updateCount,
+  asyncUpdateCount
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

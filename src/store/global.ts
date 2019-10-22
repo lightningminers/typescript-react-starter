@@ -1,17 +1,32 @@
 import { IAction } from "./shared";
 
-interface IUser{
+export type UpdateUserId = (userId: number) => IAction<number>;
+
+export interface IGlobal {
   userId: number;
 }
 
-export interface IGlobal extends IUser{}
+const GLOBAL_UPDATE_USERID = "GLOBAL_UPDATE_USERID";
+
+export const updateUserId = (userId: number) => ({
+  type: GLOBAL_UPDATE_USERID,
+  playload: userId,
+});
 
 const initialState: IGlobal = {
   userId: 0,
 };
 
-const globalReduer = (state = initialState, action: IAction) => {
-  return state;
+const globalReducer = (state = initialState, action: IAction) => {
+  const { type, playload } = action;
+  switch(type) {
+    case GLOBAL_UPDATE_USERID: {
+      return {...state, userId: playload};
+    }
+    default: {
+      return {...state};
+    }
+  }
 }
 
-export default globalReduer;
+export default globalReducer;
