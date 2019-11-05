@@ -10,7 +10,7 @@ const GLOBAL_UPDATE_USERID = "GLOBAL_UPDATE_USERID";
 
 export const updateUserId = (userId: number) => ({
   type: GLOBAL_UPDATE_USERID,
-  playload: userId,
+  payload: userId,
 });
 
 const initialState: IGlobal = {
@@ -18,10 +18,10 @@ const initialState: IGlobal = {
 };
 
 const globalReducer = (state = initialState, action: IAction) => {
-  const { type, playload } = action;
+  const { type, payload } = action;
   switch(type) {
     case GLOBAL_UPDATE_USERID: {
-      return {...state, userId: playload};
+      return {...state, userId: payload};
     }
     default: {
       return {...state};

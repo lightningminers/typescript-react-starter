@@ -9,5 +9,5 @@ export interface IStoreState {
 
 export interface IAction<T=any> {
   type: string;
-  playload: T;
+  payload: T;
 }

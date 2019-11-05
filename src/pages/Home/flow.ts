@@ -18,7 +18,7 @@ export const updateCount = (count: number) => {
   const newCount = count + 1;
   return {
     type: HOME_UPDATE_COUNT,
-    playload: newCount,
+    payload: newCount,
   }
 }
 
@@ -33,7 +33,7 @@ export const asyncUpdateCount = (count: number) => (dispatch: Dispatch<IAction>)
     const newCount = count + 1;
     dispatch({
       type: HOME_UPDATE_COUNT,
-      playload: newCount
+      payload: newCount
     })
   }, 1000);
 }
@@ -43,11 +43,11 @@ const initialState: IHomePage = {
 }
 
 const homeReducer = (state = initialState, action: IAction) => {
-  const { type, playload } = action;
+  const { type, payload } = action;
   switch(type) {
     case HOME_UPDATE_COUNT: {
       return {
-        ...state, count: playload
+        ...state, count: payload
       };
     }
     default: {
