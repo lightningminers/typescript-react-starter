@@ -1,5 +1,5 @@
 import { IGlobal } from "./global";
-import { IHomePage } from "../pages/home/flow";
+import { IHomePage } from "../pages/Home/flow";
 
 
 export interface IStoreState {

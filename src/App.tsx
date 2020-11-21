@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { IStoreState } from "./store/shared";
 import { updateUserId } from "./store/global";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 
 const App = () => {
   const global = useSelector((state: IStoreState) => ({

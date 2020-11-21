@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk"
 import globalReducer from "./global";
-import homeReducer from "../pages/home/flow";
+import homeReducer from "../pages/Home/flow";
 import { IStoreState } from "./shared";
 
 const reducers = combineReducers<IStoreState>({

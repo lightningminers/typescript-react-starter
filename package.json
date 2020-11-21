@@ -20,7 +20,7 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.1.1",
     "redux-thunk": "^2.3.0",
-    "typescript": "3.6.3"
+    "typescript": "3.8.2"
   },
   "devDependencies": {
     "customize-cra": "^0.8.0",
