@@ -13,7 +13,7 @@
 $ git clone git@github.com:icepy/typescript-react-starter.git
 $ cd typescript-react-starter
 $ yarn
-$ npm start
+$ yarn start
 ```
 
 使用浏览器访问 `http://localhost:3000/`。（更多命令可查看 package.json 的 scripts 字段）
